@@ -1,0 +1,203 @@
+# openapi: 3.0.1
+# info:
+#   title: 'Node core REST API'
+#   description: 'This is a REST API for Node core app.<br/>For **RegEx** validation use [regex101.com](https://regex101.com/) with **JavaScript** flavor.'
+#   termsOfService: http://swagger.io/terms/
+#   contact:
+#     email: 'kontakt.flashdesign@gmail.com'
+#   license:
+#     name: 'MIT'
+#     url: 'https://opensource.org/licenses/MIT'
+#   version: '0.0.1'
+# externalDocs:
+#   description: 'Find out more here'
+#   url: http://google.com
+# # servers:
+# # - url: https://petstore.swagger.io/v2
+# # - url: http://petstore.swagger.io/v2
+# tags:
+#   - name: users
+#     description: 'Operations on all users.'
+#   - name: markets
+#     description: 'Operations on specific markets.'
+#   - name: catalog
+#     description: 'Catalog of available categories structur and products templates.'
+#   - name: offers
+#     description: 'Offers saved/published by app users.'
+#   - name: transactions
+#     description: 'All info about payments (subscription vs. user).'
+#   - name: plans
+#     description: 'Available plans for paid services (list).'
+#   - name: subscribtions
+#     description: 'All info about subscriptions (plan vs. user).'
+# paths:
+#   /:
+#     get:
+#       tags:
+#         - users
+#       summary: "Array of objects represents basic users' data."
+#       operationId: get-users-all
+#       description: 'By passing the appropriate params it returns a list of (all) user profiles (basic data) limited per page, sorted and ordered.'
+#       parameters:
+#         - in: query
+#           name: limit
+#           description: 'Pass a limit for the request.'
+#           required: false
+#           schema:
+#             type: integer # Default = 10.
+#             format: int8 # Max. of int8 is 127.
+#             minimum: 1
+#             maximum: 20
+#         - in: query
+#           name: page
+#           description: 'Number of requested page for the results.'
+#           required: false
+#           schema:
+#             type: integer # Default = 1.
+#             format: int8 # Max. of int8 is 127.
+#             minimum: 1
+#             maximum: 127
+#             # exclusiveMinimum: true
+#         - in: query
+#           name: sortBy
+#           required: false
+#           description: 'Column name to sort by.'
+#           schema:
+#             type: string
+#             pattern: "/^\b(firstName|lastName|lastLoginTimestamp)\b$/gs"
+#             # minLength: 2
+#             # maxLength: 32 # Let's be well-descriptive.
+#         - in: query
+#           name: order
+#           description: 'Ascending or descending.'
+#           schema:
+#             type: string
+#             pattern: "/^\b((a|de)(sc))\b$/gs"
+#       responses:
+#         '200':
+#           description: 'Result of listing (pagination).'
+#           content:
+#             application/json:
+#               schema:
+#                 type: array
+#                 items:
+#                   $ref: '#/components/schemas/userBasic'
+
+#         '500':
+#           - $ref: '#/components/schemas/code500'
+
+#         default:
+#           description: unexpected error
+#           content:
+#             application/json:
+#               schema:
+#                 $ref: '#/components/schemas/error'
+#     post:
+#       tags:
+#         - users
+#       summary: 'Creates new user.'
+#       operationId: createUser
+#       description: "By passing the object of basic user's data."
+#       responses:
+#         '201':
+#           description: item created
+#         '400':
+#           description: 'invalid input, object invalid'
+#         '409':
+#           description: an existing item already exists
+#       requestBody:
+#         description: Inventory item to add
+#         content:
+#           application/json:
+#             schema:
+#               $ref: '#/components/schemas/userBasic'
+#       security:
+#         - petstore_auth:
+#             - write:pets
+#             - read:pets
+#   # /:userId:
+#   /userId:
+#     get:
+#       description: My descr
+#       tags:
+#         - users
+#       operationId: searchInventory2
+#       parameters:
+#         - in: query
+#           name: userId
+#           description: xxxxx
+#           schema:
+#             type: integer
+
+#       responses:
+#         '200':
+#           description: search results matching criteria
+#           content:
+#             application/json:
+#               schema:
+#                 type: array
+#                 items:
+#                   $ref: '#/components/schemas/userBasic'
+# components:
+#   schemas:
+#     error:
+#       description: 'Use this schema always on error.'
+#       type: object
+#       required:
+#         - devMsg
+#         - uiMsg
+#       properties:
+#         devMsg:
+#           type: string
+#           minLength: 1
+#           maxLength: 1024
+#           example: 'Invalid parameter value. Max. XXX is YYY.' # or "Parameter missing. ZZZ not found." Default = "Unknown reason."
+#         uiMsg:
+#           type: string
+#           minLength: 1
+#           maxLength: 1024
+#           example: 'Please correct the form. Field XXX should be not bigger than YYY. If you need more customized service please contact on Facebook!' # Default = "Sorry, we couldn't process your request online. Please contact us to finish this request."
+
+#     code500:
+#       description: "Internal server error. The script couldn't process the data."
+#       content:
+#         application/json:
+#           schema:
+#             $ref: '#/components/schemas/error'
+
+#     userBasic:
+#       type: object
+#       required:
+#         - id
+#         - name
+#         - manufacturer
+#         - releaseDate
+#       properties:
+#         id:
+#           type: string
+#           format: uuid
+#           example: d290f1ee-6c54-4b01-90e6-d701748f0851
+#         name:
+#           type: string
+#           example: Widget Adapter
+#         releaseDate:
+#           type: string
+#           format: date-time
+#           example: '2016-08-29T09:12:33.001Z'
+#         manufacturer:
+#           $ref: '#/components/schemas/Manufacturer'
+#     Manufacturer:
+#       required:
+#         - name
+#       properties:
+#         name:
+#           type: string
+#           example: ACME Corporation
+#         homePage:
+#           type: string
+#           format: url
+#           example: 'https://www.acme-corp.com'
+#         phone:
+#           type: string
+#           example: 408-867-5309
+#       type: object
