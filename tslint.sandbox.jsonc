@@ -1,0 +1,45 @@
+{
+  "defaultSeverity": "error",
+  "extends": [
+    "tslint:latest",
+    // "tslint-react",
+    // "tslint-config-airbnb"
+    // "tslint-config-prettier"
+  ],
+  "jsRules": {
+    "no-unused-expression": true
+  },
+  "rules": {
+    "quotemark": [true, "single"],
+    "member-access": [false],
+    "ordered-imports": [true],
+    "max-line-length": [true, 150],
+    "member-ordering": [false],
+    "interface-name": [false],
+    "arrow-parens": false,
+    "object-literal-sort-keys": false,
+    "semicolon": [true, "never"],
+    "arrow-return-shorthand": true,
+    "no-console": false,
+    "no-debugger": false,
+    // "jsx-no-lambda": false,
+    "no-empty-interface": true,
+    "variable-name": [
+      true,
+      "ban-keywords",
+      "check-format",
+      "allow-pascal-case", // Some constants are functions that returns React components that have to be rendered in <UpperCamelCase />.
+      "require-const-for-all-caps"
+    ]
+  },
+  "rulesDirectory": [],
+  "linterOptions": {
+    "exclude": [
+      // "config/**/*.js",
+      // "node_modules/**/*.ts",
+      // "coverage/lcov-report/*.js",
+      // "build/**/*",
+      // "build-dev/**/*"
+    ]
+  }
+}
