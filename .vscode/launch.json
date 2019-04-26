@@ -9,6 +9,6 @@
     "name": "Debug NestJS",
     "processId": "${command:PickProcess}",
     "restart": true,
-    "protocol": "inspector",
-  }, ]
+    "protocol": "inspector"
+  }]
 }
