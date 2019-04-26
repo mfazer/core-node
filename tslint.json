@@ -1,6 +1,6 @@
 {
   "defaultSeverity": "error",
-  "extends": ["tslint:recommended"],
+  "extends": ["tslint:latest"],
   "jsRules": {
     "no-unused-expression": true
   },
@@ -12,7 +12,22 @@
     "member-ordering": [false],
     "interface-name": [false],
     "arrow-parens": false,
-    "object-literal-sort-keys": false
+    "object-literal-sort-keys": false,
+    "semicolon": [true, "never"],
+    "arrow-return-shorthand": true,
+    "no-console": false,
+    "no-debugger": false,
+    "no-empty-interface": true,
+    "variable-name": [
+      true,
+      "ban-keywords",
+      "check-format",
+      "allow-pascal-case",
+      "require-const-for-all-caps"
+    ]
   },
-  "rulesDirectory": []
+  "rulesDirectory": [],
+  "linterOptions": {
+    "exclude": []
+  }
 }
