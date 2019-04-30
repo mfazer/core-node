@@ -3,6 +3,14 @@
   "configurations": [
     {
       "type": "node",
+      "request": "attach",
+      "protocol": "inspector",
+      "name": "Attach to port",
+      "port": 9229,
+      "sourceMaps": true
+    },
+    {
+      "type": "node",
       "request": "launch",
       "name": "Debug Node app",
       "internalConsoleOptions": "openOnSessionStart",
