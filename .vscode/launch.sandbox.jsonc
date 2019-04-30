@@ -1,9 +1,18 @@
-/* Tip:
+/*
+
+Run command:
+npm run start:debug
+before "Attach to port" debugging.
+
+---
+
+Tip:
 You can use ts-node together with tsconfig-paths to load modules according to the aths section in tsconfig.json.
 Source: https://github.com/TypeStrong/ts-node
 "runtimeArgs":{
-    ...
-    "-r",
-    "tsconfig-paths/register"
-  }
+  ...
+  "-r",
+  "tsconfig-paths/register"
+}
+
 */
