@@ -15,4 +15,10 @@ Source: https://github.com/TypeStrong/ts-node
   "tsconfig-paths/register"
 }
 
+---
+
+Run PowerShell command:
+get-process node | Stop-Process
+to kill any node process.
+
 */
