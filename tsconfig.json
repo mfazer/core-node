@@ -2,18 +2,22 @@
   "compilerOptions": {
     "module": "commonjs",
     "declaration": false,
-    "noImplicitAny": false,
     "noUnusedLocals": true,
+    "noImplicitAny": false,
     "removeComments": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "target": "es6",
     "sourceMap": true,
-    "allowJs": false,
+    "strict": true,
+    "strictNullChecks": false,
+    "allowJs": true,
+    "checkJs": true,
     "outDir": "./dist",
     "lib": ["es7"],
     "baseUrl": "./",
-    "incremental": true
+    "incremental": true,
+    "skipLibCheck": true
   },
   "include": ["./src", "packages/**/*", "integration/**/*"],
   "exclude": ["node_modules", "**/*.spec.ts", "dist"]
