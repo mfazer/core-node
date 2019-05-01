@@ -1,0 +1,33 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "typescript-at-node-windows-ps",
+      "type": "typescript",
+      "tsconfig": "tsconfig.json",
+      "options": {
+        "shell": {
+          "executable": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+          "args": []
+        }
+      },
+      "option": "watch",
+      "problemMatcher": ["$tsc-watch", "$tsc"],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    },
+    {
+      "label": "kill-node",
+      "type": "shell",
+      "command": "get-process node | Stop-Process",
+      "options": {
+        "shell": {
+          "executable": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+          "args": []
+        }
+      }
+    }
+  ]
+}
