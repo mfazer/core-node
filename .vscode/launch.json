@@ -11,7 +11,12 @@
       "program": "${workspaceFolder}/src/main.ts",
       "console": "internalConsole",
       "cwd": "${workspaceFolder}",
-      "outFiles": ["${workspaceFolder}/dist/**/*.js"]
+      "outFiles": ["${workspaceFolder}/dist/**/*.js"],
+      "skipFiles": [
+        "node_modules/**/*.js",
+        "${workspaceFolder}/node_modules/**/*.js",
+        "<node_internals>/**/*.js"
+      ]
     },
     {
       "type": "node",
@@ -20,14 +25,18 @@
       "protocol": "inspector",
       "postDebugTask": "kill-node",
       "port": 9229,
-      "sourceMaps": true
+      "sourceMaps": true,
+      "skipFiles": [
+        "node_modules/**/*.js",
+        "${workspaceFolder}/node_modules/**/*.js",
+        "<node_internals>/**/*.js"
+      ]
     },
     {
       "type": "node",
       "request": "launch",
       "name": "Launch: Debug Node app",
       "protocol": "inspector",
-      "postDebugTask": "kill-node",
       "internalConsoleOptions": "openOnSessionStart",
       "console": "internalConsole",
       "args": ["${workspaceFolder}/src/main.ts"],
