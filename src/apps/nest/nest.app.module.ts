@@ -1,32 +1,32 @@
 // Nest:
 import {
+  MiddlewareConsumer,
   Module,
-  // MiddlewareConsumer,
-  // NestModule,
-  // RequestMethod
+  NestModule,
+  RequestMethod,
 } from '@nestjs/common'
 
+// Nest - modules:
+import { UsersModule } from './users/users.module'
+
 // Nest - controllers:
-import { NestAppController } from './nest.app.controller'
-import { UsersController } from './users/users.controller'
-import { WildController } from './users/wild/wild.controller'
+// None.
 
 // Nest - services:
-import { NestAppService } from './nest.app.service'
-import { UsersService } from './users/users.service'
+// None.
 
 // Nest - middleware:
-// import { AppLoggerMiddleware } from './nest.app.middleware'
+import { LoggerMiddleware } from './common/middleware/logger.middleware'
 
 @Module({
-  imports: [],
-  controllers: [NestAppController, UsersController, WildController],
-  providers: [NestAppService, UsersService],
+  imports: [UsersModule],
+  controllers: [],
+  providers: [],
 })
-export class NestAppModule /* implements NestModule */ {
-  /* configure(consumer: MiddlewareConsumer) {
+export class NestAppModule implements NestModule {
+  configure(consumer: MiddlewareConsumer) {
     consumer
-      .apply(AppLoggerMiddleware)
-      .forRoutes({ path: 'cats', method: RequestMethod.ALL })
-  } */
+      .apply(LoggerMiddleware)
+      .forRoutes({ path: 'users', method: RequestMethod.POST })
+  }
 }

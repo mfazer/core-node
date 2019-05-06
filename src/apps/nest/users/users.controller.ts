@@ -3,6 +3,9 @@ import {
   Body,
   // Get,
   Controller,
+  Get,
+  HttpException,
+  HttpStatus,
   Post,
 } from '@nestjs/common'
 
@@ -14,10 +17,6 @@ import { UsersService } from './users.service'
 
 // Types:
 // import { IUser } from './users.types'
-
-// Utils:
-import * as pino from 'pino'
-const logger = pino({ prettyPrint: true })
 
 @Controller('users')
 export class UsersController {
@@ -31,15 +30,17 @@ export class UsersController {
   ownTextRender(): string {
     return 'USERS'
   } */
+  @Get()
+  async findAll() {
+    throw new HttpException('Forbidden', HttpStatus.FORBIDDEN)
+  }
   @Post()
   async createNewUser(@Body() initUser: CreateNewUserDTO /*Payloads.Post.ICreateNewUser*/): Promise<string> {
     const { age, name, hasBeard } = initUser
     this.usersService.create(initUser)
     console.log(this.usersService.findAll())
 
-    logger.info('Name:', name, 'Age:', age, 'Beard:', hasBeard ? 'yes' : 'no')
-
-    return `This action will create new user: ${name} has ${age} year(s) and has a beard: ${hasBeard ? 'yes' : 'no'}.`
+    return `This action will create new user: ${name} has ${age} year(s) and has a beard: ${hasBeard ? 'yes3' : 'no'}.`
     // Database operations here.
   }
 }
