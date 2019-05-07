@@ -18,6 +18,7 @@
     "no-console": false,
     "no-debugger": false,
     "no-empty-interface": true,
+    "ban-types": false,
     "variable-name": [
       true,
       "ban-keywords",
