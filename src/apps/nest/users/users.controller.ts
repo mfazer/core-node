@@ -3,10 +3,10 @@ import {
   Body,
   // Get,
   Controller,
+  ForbiddenException,
   Get,
-  HttpException,
-  HttpStatus,
   Post,
+  ValidationPipe,
 } from '@nestjs/common'
 
 // DTOs:
@@ -17,6 +17,9 @@ import { UsersService } from './users.service'
 
 // Types:
 // import { IUser } from './users.types'
+
+// Validation:
+// import { ValidationPipe } from './../common/pipes/validation.pipe'
 
 @Controller('users')
 export class UsersController {
@@ -32,10 +35,10 @@ export class UsersController {
   } */
   @Get()
   async findAll() {
-    throw new HttpException('Forbidden', HttpStatus.FORBIDDEN)
+    throw new ForbiddenException()
   }
   @Post()
-  async createNewUser(@Body() initUser: CreateNewUserDTO /*Payloads.Post.ICreateNewUser*/): Promise<string> {
+  async create(@Body(new ValidationPipe()) initUser: CreateNewUserDTO /*Payloads.Post.ICreateNewUser*/): Promise<string> {
     const { age, name, hasBeard } = initUser
     this.usersService.create(initUser)
     console.log(this.usersService.findAll())
