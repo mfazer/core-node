@@ -3,7 +3,7 @@ import {
   MiddlewareConsumer,
   Module,
   NestModule,
-  RequestMethod,
+  // RequestMethod,
 } from '@nestjs/common'
 
 // Nest - modules:
@@ -27,6 +27,6 @@ export class NestAppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
     consumer
       .apply(LoggerMiddleware)
-      .forRoutes({ path: 'users', method: RequestMethod.POST })
+    // .forRoutes({ path: 'users', method: RequestMethod.POST })
   }
 }

@@ -10,7 +10,7 @@ export class LoggerMiddleware implements NestMiddleware {
   // use(req: Request, res: Response, next: () => void) {
   use(req: Request, res: Response, next: NextFunction) {
     // logger.info('Name:', name, 'Age:', age, 'Beard:', hasBeard ? 'yes!' : 'no!')
-    logger.info('Middleware logger')
+    logger.info('Middleware logger:', new Date())
     next()
   }
 }
