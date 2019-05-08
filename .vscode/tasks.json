@@ -28,6 +28,11 @@
           "args": []
         }
       }
+    },
+    {
+      "label": "npm-run-start:debug",
+      "type": "shell",
+      "command": "npm run start:debug"
     }
   ]
 }
