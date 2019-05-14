@@ -17,7 +17,7 @@ export class CreateNewUserDTO {
   @IsNotEmpty()
   @IsString()
   @Length(4, 32)
-  @Matches(/^[\w\d-._]+$/, 'is')
+  @Matches(/^[a-zA-Z\d]+[-]?[a-zA-Z\d]+$/, 'is')
   readonly nick: string
 
   @IsDefined()
