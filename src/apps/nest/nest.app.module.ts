@@ -5,6 +5,7 @@ import {
   NestModule,
   // RequestMethod,
 } from '@nestjs/common'
+import { MongooseModule } from '@nestjs/mongoose'
 
 // Nest - modules:
 import { UsersModule } from './users/users.module'
@@ -19,9 +20,9 @@ import { UsersModule } from './users/users.module'
 import { LoggerMiddleware } from './common/middleware/logger.middleware'
 
 @Module({
-  imports: [UsersModule],
-  controllers: [],
-  providers: [],
+  imports: [UsersModule, MongooseModule.forRoot('mongodb://localhost/core-mongo')],
+  // controllers: [],
+  // providers: [],
 })
 export class NestAppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {

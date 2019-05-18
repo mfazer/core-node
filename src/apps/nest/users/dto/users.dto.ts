@@ -12,7 +12,7 @@ import {
 } from 'class-validator'
 
 // Data Transfer Object(s):
-export class CreateNewUserDTO {
+export class CreateUserDTO {
   @IsDefined()
   @IsNotEmpty()
   @IsString()
