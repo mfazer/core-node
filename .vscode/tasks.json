@@ -33,6 +33,11 @@
       "label": "npm-run-start:debug",
       "type": "shell",
       "command": "npm run start:debug"
+    },
+    {
+      "label": "run-db:core-mongo",
+      "type": "shell",
+      "command": "cd .. && cd core-mongo && mongod --dbpath=\"./\""
     }
   ]
 }
