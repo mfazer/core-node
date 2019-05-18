@@ -37,7 +37,8 @@
     {
       "label": "run-db:core-mongo",
       "type": "shell",
-      "command": "cd .. && cd core-mongo && mongod --dbpath=\"./\""
+      "command": "mongod --dbpath=\"./\"",
+      "options": { "cwd": "../core-mongo" }
     }
   ]
 }
