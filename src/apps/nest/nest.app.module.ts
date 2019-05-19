@@ -20,7 +20,10 @@ import { UsersModule } from './users/users.module'
 import { LoggerMiddleware } from './common/middleware/logger.middleware'
 
 @Module({
-  imports: [UsersModule, MongooseModule.forRoot('mongodb://localhost/core-mongo')],
+  imports: [
+    UsersModule,
+    MongooseModule.forRoot('mongodb://localhost/core-mongo'),
+  ],
   // controllers: [],
   // providers: [],
 })
