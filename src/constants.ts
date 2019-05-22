@@ -8,7 +8,7 @@ interface IRegExps {
 // Tip: Use new RegExp(pattern, flags) syntax.
 export const regExps: IRegExps = {
   nick: {
-    pattern: /^[a-zA-Z\d]+[-]?[a-zA-Z\d]+$/,
+    pattern: /^[a-z\d]+[-]?[a-z\d]+$/,
     flags: 'is',
   },
 }
