@@ -25,6 +25,8 @@
     "no-debugger": false,
     // "jsx-no-lambda": false,
     "no-empty-interface": true,
+    "no-implicit-dependencies": [true, ["src"]],
+    "no-submodule-imports": [true, "src"],
     "variable-name": [
       true,
       "ban-keywords",
