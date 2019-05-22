@@ -10,6 +10,7 @@
       "postDebugTask": "kill-node",
       "program": "${workspaceFolder}/src/main.ts",
       "console": "internalConsole",
+      "env": { "NODE_ENV": "dev" },
       "cwd": "${workspaceFolder}",
       "outFiles": ["${workspaceFolder}/dist/**/*.js"],
       "skipFiles": [
@@ -42,11 +43,12 @@
       "args": ["${workspaceFolder}/src/main.ts"],
       "runtimeArgs": ["--nolazy", "-r", "ts-node/register"],
       "sourceMaps": true,
+      "env": { "NODE_ENV": "dev" },
       "cwd": "${workspaceRoot}",
       "skipFiles": [
         "node_modules/**/*.js",
         "${workspaceFolder}/node_modules/**/*.js",
-        "<node_internals>/**/*.js" 
+        "<node_internals>/**/*.js"
       ]
     }
   ]
