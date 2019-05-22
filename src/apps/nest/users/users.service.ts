@@ -1,6 +1,4 @@
-import {
-  Injectable,
-} from '@nestjs/common'
+import { Injectable } from '@nestjs/common'
 import { InjectModel } from '@nestjs/mongoose'
 
 // DTOs:
@@ -9,6 +7,9 @@ import { CreateUserDTO } from './dto/users.dto'
 // Types:
 import { IUser } from './interfaces/users.interface'
 
+// Response:
+import { IResBody, ResBody } from './../common/interfaces/nest.interface'
+
 // Object Data Modeling (ODM):
 import { Model } from 'mongoose'
 
@@ -16,14 +17,31 @@ import { Model } from 'mongoose'
 export class UsersService {
   constructor(
     @InjectModel('users') private readonly userModel: Model<IUser<void>>,
-  ) { }
-  async create(createUserDTO: CreateUserDTO): Promise<boolean> {
+  ) {}
+  async create(createUserDTO: CreateUserDTO): Promise<IResBody> {
     const userModel = new this.userModel(createUserDTO)
     try {
-      const user: IUser<'Mongo'> = await userModel.save()
-      return !Boolean(user.errors)
+      /* const user: IUser<'Mongo'> =*/ await userModel.save()
+      // console.log('TCL: UsersService -> user', user)
+      const body: IResBody = new ResBody().success({
+        messages: {
+          notification: `User ${
+            createUserDTO.name
+          } has been successfully created.`,
+        },
+      })
+      return body
     } catch (error) {
-      return false
+      // throw new Error()
+      const mongoError: Error = error
+      const body = new ResBody().error({
+        type: 'MongoError',
+        messages: {
+          console: mongoError.message,
+          notification: 'User with given data already exists.',
+        },
+      })
+      return body
     }
   }
   /* async findAll(): Promise<IUser[]> {
