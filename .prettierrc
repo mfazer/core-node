@@ -1,4 +1,17 @@
 {
   "singleQuote": true,
-  "trailingComma": "all"
+  "trailingComma": "all",
+  "endOfLine": "auto",
+  "overrides": [
+    {
+      "files": "*.ts*",
+      "options": {
+        "semi": false
+      }
+    },
+    {
+      "files": "*.scss",
+      "options": {}
+    }
+  ]
 }
