@@ -13,6 +13,7 @@ import {
 import { CreateUserDTO } from './dto/users.dto'
 
 // Services:
+import { ConfigService } from './../common/services/config.service'
 import { UsersService } from './users.service'
 
 // Types:
@@ -23,7 +24,10 @@ import { IResBody } from '../common/interfaces/nest.interface'
 
 @Controller('users')
 export class UsersController {
-  constructor(private readonly usersService: UsersService) {}
+  constructor(
+    private readonly usersService: UsersService,
+    private readonly config: ConfigService,
+  ) {}
   /* @Get()
   async getAll() {
     throw new ForbiddenException()
@@ -38,6 +42,9 @@ export class UsersController {
     )
     initUser: CreateUserDTO,
   ): Promise<IResBody> {
+    const dbUser: string = this.config.get('MONGO_DB_USER')
+    console.log('TCL: UsersController -> dbName', dbUser)
+
     // const { name, nick, email } = initUser
     const success: IResBody = await this.usersService.create(initUser)
     return success

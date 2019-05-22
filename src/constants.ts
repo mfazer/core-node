@@ -12,3 +12,8 @@ export const regExps: IRegExps = {
     flags: 'is',
   },
 }
+export const databases = {
+  mongo: {
+    name: 'core-mongo',
+  },
+}
