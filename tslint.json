@@ -5,6 +5,7 @@
     "no-unused-expression": true
   },
   "rules": {
+    "eofline": true,
     "quotemark": [true, "single"],
     "member-access": [false],
     "ordered-imports": [true],
@@ -18,6 +19,7 @@
     "no-console": false,
     "no-debugger": false,
     "no-empty-interface": true,
+    "no-unnecessary-initializer": true,
     "ban-types": false,
     "variable-name": [
       true,

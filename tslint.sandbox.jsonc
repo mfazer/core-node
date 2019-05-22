@@ -10,6 +10,7 @@
     "no-unused-expression": true
   },
   "rules": {
+    // Take more from: https://github.com/nestjs/nest/blob/master/tslint.json
     "quotemark": [true, "single"],
     "member-access": [false],
     "ordered-imports": [true],
