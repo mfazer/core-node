@@ -1,6 +1,9 @@
 // Swagger:
 // import { ApiModelProperty } from '@nestjs/swagger'
 
+// Constants:
+import { regExps } from '../../../../constants'
+
 // Validation:
 import {
   IsDefined,
@@ -17,7 +20,7 @@ export class CreateUserDTO {
   @IsNotEmpty()
   @IsString()
   @Length(4, 32)
-  @Matches(/^[a-zA-Z\d]+[-]?[a-zA-Z\d]+$/, 'is')
+  @Matches(regExps.nick.pattern, regExps.nick.flags)
   readonly nick: string
 
   @IsDefined()
