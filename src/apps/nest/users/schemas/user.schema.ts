@@ -1,6 +1,7 @@
 import * as mongoose from 'mongoose'
 // import { regExps } from 'src/constants'
-import { regExp } from '../../../../constants'
+import { validation } from '../../../../constants'
+const { nick, name, email } = validation
 
 export const UserSchema = new mongoose.Schema({
   nick: {
@@ -10,7 +11,9 @@ export const UserSchema = new mongoose.Schema({
     unique: true,
     lowercase: true,
     trim: true,
-    match: new RegExp(regExp.nick.pattern, regExp.nick.flags),
+    match: new RegExp(nick.regExp.pattern, nick.regExp.flags),
+    minlength: nick.minLength,
+    maxlength: nick.maxLength,
   },
   name: {
     type: String,
@@ -18,6 +21,8 @@ export const UserSchema = new mongoose.Schema({
     index: false,
     unique: false,
     trim: true,
+    minlength: name.minLength,
+    maxlength: name.maxLength,
   },
   email: {
     type: String,
@@ -26,5 +31,7 @@ export const UserSchema = new mongoose.Schema({
     unique: true,
     lowercase: true,
     trim: true,
+    minlength: email.minLength,
+    maxlength: email.maxLength,
   },
 })
