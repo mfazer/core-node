@@ -1,6 +1,6 @@
 import * as mongoose from 'mongoose'
 // import { regExps } from 'src/constants'
-import { regExps } from '../../../../constants'
+import { regExp } from '../../../../constants'
 
 export const UserSchema = new mongoose.Schema({
   nick: {
@@ -10,7 +10,7 @@ export const UserSchema = new mongoose.Schema({
     unique: true,
     lowercase: true,
     trim: true,
-    match: new RegExp(regExps.nick.pattern, regExps.nick.flags),
+    match: new RegExp(regExp.nick.pattern, regExp.nick.flags),
   },
   name: {
     type: String,

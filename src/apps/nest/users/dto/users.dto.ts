@@ -3,7 +3,7 @@
 
 // Constants:
 // import { regExps } from 'src/constants'
-import { regExps } from './../../../../constants'
+import { regExp } from './../../../../constants'
 
 // Validation:
 import {
@@ -21,7 +21,7 @@ export class CreateUserDTO {
   @IsNotEmpty()
   @IsString()
   @Length(4, 32)
-  @Matches(regExps.nick.pattern, regExps.nick.flags)
+  @Matches(regExp.nick.pattern, regExp.nick.flags)
   readonly nick: string
 
   @IsDefined()

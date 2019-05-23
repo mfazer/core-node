@@ -23,14 +23,14 @@ import { LoggerMiddleware } from './common/middleware/logger.middleware'
 import { ConfigModule } from './common/modules/config.module'
 
 // Constants:
-import { databases } from './../../constants'
+import { db } from './../../constants'
 
 @Module({
   providers: [NestAppService],
   imports: [
     ConfigModule,
     // TODO: Move 'core-mongo' to .env file:
-    MongooseModule.forRoot(`mongodb://localhost/${databases.mongo.name}`),
+    MongooseModule.forRoot(`mongodb://localhost/${db.mongo.name}`),
     UsersModule,
   ],
 })
