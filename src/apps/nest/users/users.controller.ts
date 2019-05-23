@@ -17,7 +17,7 @@ import { ConfigService } from './../common/services/config.service'
 import { UsersService } from './users.service'
 
 // Types:
-import { IResBody } from '../common/interfaces/nest.interface'
+import { IResponseBody } from '../common/interfaces/response.interface'
 
 // Validation:
 // import { ValidationPipe } from './../common/pipes/validation.pipe'
@@ -41,12 +41,12 @@ export class UsersController {
       }),
     )
     initUser: CreateUserDTO,
-  ): Promise<IResBody> {
+  ): Promise<IResponseBody> {
     const dbUser: string = this.config.get('MONGO_DB_USER')
     console.log('TCL: UsersController -> dbName', dbUser)
 
     // const { name, nick, email } = initUser
-    const success: IResBody = await this.usersService.create(initUser)
+    const success: IResponseBody = await this.usersService.create(initUser)
     return success
   }
 }

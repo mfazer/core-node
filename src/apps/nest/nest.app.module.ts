@@ -8,6 +8,8 @@ import {
 import { MongooseModule } from '@nestjs/mongoose'
 
 // Nest - modules:
+import { ConfigModule } from './common/modules/config.module'
+import { ResponseModule } from './common/modules/response.module'
 import { UsersModule } from './users/users.module'
 
 // Nest - controllers:
@@ -19,9 +21,6 @@ import { NestAppService } from './nest.app.service'
 // Nest - middleware:
 import { LoggerMiddleware } from './common/middleware/logger.middleware'
 
-// Config:
-import { ConfigModule } from './common/modules/config.module'
-
 // Constants:
 import { db } from './../../constants'
 
@@ -29,6 +28,7 @@ import { db } from './../../constants'
   providers: [NestAppService],
   imports: [
     ConfigModule,
+    ResponseModule,
     // TODO: Move 'core-mongo' to .env file:
     MongooseModule.forRoot(`mongodb://localhost/${db.mongo.name}`),
     UsersModule,
