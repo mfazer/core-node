@@ -17,7 +17,8 @@
     "lib": ["es7"],
     "baseUrl": "./",
     "incremental": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "alwaysStrict": true
   },
   "include": ["./src", "packages/**/*", "integration/**/*"],
   "exclude": ["node_modules", "**/*.spec.ts", "dist"]
