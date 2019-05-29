@@ -44,9 +44,10 @@ export class UsersController {
   ): Promise<IResponseBody> {
     const dbUser: string = this.config.get('MONGO_DB_USER')
     console.log('TCL: UsersController -> dbName', dbUser)
-
-    // const { name, nick, email } = initUser
-    const success: IResponseBody = await this.usersService.create(initUser)
-    return success
+    try {
+      return await this.usersService.create(initUser)
+    } catch (error) {
+      throw error
+    }
   }
 }

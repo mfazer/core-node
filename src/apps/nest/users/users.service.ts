@@ -33,7 +33,7 @@ export class UsersService {
     } catch (error) {
       // throw new Error()
       const mongoError: Error = error
-      const body = new ResponseService().error({
+      const body: IResponseBody = new ResponseService().error({
         type: 'MongoError',
         msg_console: mongoError.message,
         msg_dialog: 'User with given data already exists.',

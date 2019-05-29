@@ -4,13 +4,19 @@ interface IMessages {
   msg_console?: any
 }
 type TErrorType = 'MongoError' | 'NodeServerError'
-export interface IErrorBody extends IMessages {
-  // error: true
+type TData = object | null
+export interface ICreateError extends IMessages {
   type: TErrorType
 }
-type TData = object | null
-export interface ISuccessBody extends IMessages {
-  // success: true
+export interface ICreateSuccess extends IMessages {
   data?: TData
 }
-export type IResponseBody = ISuccessBody | IErrorBody
+export interface IErrorBody extends IMessages {
+  error?: true
+  type?: TErrorType
+}
+export interface ISuccessBody extends IMessages {
+  success?: true
+  data?: TData
+}
+export type IResponseBody = ISuccessBody & IErrorBody
