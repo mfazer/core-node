@@ -30,12 +30,12 @@
       }
     },
     {
-      "label": "npm-run-start:debug",
+      "label": "npm-run-start-debug",
       "type": "shell",
       "command": "npm run start:debug"
     },
     {
-      "label": "run-db:core-mongo",
+      "label": "run-db-core-mongo",
       "type": "shell",
       "command": "mongod --dbpath=\"./\"",
       "options": { "cwd": "../core-mongo" }
