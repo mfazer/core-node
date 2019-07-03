@@ -6,7 +6,8 @@
     {
       "files": "*.ts*",
       "options": {
-        "semi": false
+        "semi": false,
+        "arrowParens": "always"
       }
     },
     {
