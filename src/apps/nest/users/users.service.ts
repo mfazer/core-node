@@ -11,7 +11,11 @@ import { IUser } from './interfaces/users.interface'
 import { ResponseService } from './../common/services/response.service'
 
 // Types:
-import { IResponseBody } from './../common/interfaces/response.interface'
+import {
+  // IResponseBody,
+  IErrorBody,
+  ISuccessBody,
+} from './../common/interfaces/response.interface'
 
 // Object Data Modeling (ODM):
 import { Model } from 'mongoose'
@@ -21,24 +25,32 @@ export class UsersService {
   constructor(
     @InjectModel('users') private readonly userModel: Model<IUser<void>>,
   ) {}
-  async create(createUserDTO: CreateUserDTO): Promise<IResponseBody> {
+  async create(
+    createUserDTO: CreateUserDTO,
+  ): Promise<ISuccessBody | IErrorBody> {
     const userModel = new this.userModel(createUserDTO)
     try {
       /* const user: IUser<'Mongo'> =*/ await userModel.save()
       // console.log('TCL: UsersService -> user', user)
+      /*
       const body: IResponseBody = new ResponseService().success({
         msg_notify: `User ${createUserDTO.name} has been successfully created.`,
+      })
+      */
+      // return body
+      const body: ISuccessBody = new ResponseService().success({
+        msgDialog: 'OK',
       })
       return body
     } catch (error) {
       // throw new Error()
       const mongoError: Error = error
-      const body: IResponseBody = new ResponseService().error({
+      const body: IErrorBody = new ResponseService().error({
         type: 'MongoError',
-        msg_console: mongoError.message,
-        msg_dialog: 'User with given data already exists.',
+        msgConsole: mongoError.message,
+        msgDialog: 'User with given data already exists.',
       })
-      return body
+      throw body
     }
   }
   /* async findAll(): Promise<IUser[]> {

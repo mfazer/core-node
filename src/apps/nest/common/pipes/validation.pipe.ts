@@ -1,6 +1,8 @@
 import {
   ArgumentMetadata,
-  BadRequestException,
+  // BadRequestException,
+  HttpException,
+  HttpStatus,
   Injectable,
   PipeTransform,
 } from '@nestjs/common'
@@ -16,11 +18,11 @@ export class ValidationPipe implements PipeTransform<any> {
     const object = plainToClass(metatype, value)
     const errors = await validate(object)
     if (errors.length > 0) {
-      throw new BadRequestException('Validation failed')
+      // throw new BadRequestException('Validation failed')
+      throw new HttpException('Validation failed', HttpStatus.BAD_REQUEST)
     }
     return value
   }
-
   private toValidate(metatype: Function): boolean {
     const types: Function[] = [String, Boolean, Number, Array, Object]
     return !types.includes(metatype)
